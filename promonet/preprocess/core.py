@@ -91,9 +91,9 @@ def from_audio(
         # Resample
         length = promonet.convert.samples_to_frames(
             torchaudio.functional.resample(
-                audio.shape[-1],
+                audio,
                 sample_rate,
-                promonet.SAMPLE_RATE))
+                promonet.SAMPLE_RATE).shape[-1])
         ppg = promonet.edit.grid.sample(
             ppg,
             promonet.edit.grid.of_length(ppg, length),
